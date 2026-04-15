@@ -5,18 +5,18 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.workintech.s19d2.config.SecurityConfig;
 import com.workintech.s19d2.controller.AccountController;
 import com.workintech.s19d2.controller.AuthController;
-import com.workintech.s19d2.dto.RegistrationMember;
+import com.workintech.s19d2.dao.MemberRepository;
+import com.workintech.s19d2.dao.RoleRepository;
 import com.workintech.s19d2.entity.Account;
 import com.workintech.s19d2.entity.Member;
 import com.workintech.s19d2.service.AccountService;
 import com.workintech.s19d2.service.AuthenticationService;
-import org.junit.jupiter.api.BeforeAll;
+import com.workintech.s19d2.dto.RegistrationMember;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
@@ -52,6 +52,10 @@ class ControllerTest {
     private UserDetailsService userDetailsService;
     @Autowired
     private MockMvc mockMvc;
+    @MockBean
+    private MemberRepository memberRepository;
+    @MockBean
+    private RoleRepository roleRepository;
 
 
     @MockBean
